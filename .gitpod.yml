@@ -4,9 +4,6 @@
 # 
 image:
   file: .gitpod.Dockerfile
-# tasks:
-#   - init: echo "init"
-#     command: ./setup-helper.sh && avm use 0.24.2 && yarn test:watch
-#     env:
-#       BROWSER:
-#       PATH: "/home/gitpod/.local/share/solana/install/active_release/bin:$PATH"
+tasks:
+  - init: yarn && anchor build
+    command: yarn test:watch
