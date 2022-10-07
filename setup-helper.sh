@@ -8,7 +8,7 @@ solana --version
 solana-keygen new
 
 # install anchor
-sudo apt-get update && sudo apt-get upgrade && sudo apt-get install -y pkg-config build-essential libudev-dev
+sudo apt-get --yes update && sudo apt-get --yes upgrade && sudo apt-get install --yes --force-yes pkg-config build-essential libudev-dev
 cargo install --git https://github.com/project-serum/anchor avm --locked --force
 avm install 0.24.2
 

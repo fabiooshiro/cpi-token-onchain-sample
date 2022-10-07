@@ -26,7 +26,7 @@ describe("cpi-token-onchain-sample", () => {
     const fromAccount = await createAssociatedTokenAccount(connection, fromWallet, mint, fromWallet.publicKey)
     await mintTo(connection, fromWallet, mint, fromAccount, fromWallet, 5000000000);
     const toAccount = await createAssociatedTokenAccount(connection, fromWallet, mint, toWallet.publicKey)
-    console.log('initializing...')
+    console.log('Call contract...')
     const tx = await program.methods.initialize(new anchor.BN(2000000000), 1)
       .accounts({
         mint,

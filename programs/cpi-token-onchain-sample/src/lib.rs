@@ -1,6 +1,5 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{self, Transfer};
-use anchor_spl::token::{Mint, TokenAccount};
+use anchor_spl::token::{self, Transfer, Mint, TokenAccount};
 
 declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
 
@@ -15,7 +14,6 @@ pub mod cpi_token_onchain_sample {
             &[nonce],
         ];
         let signer = &[&seeds[..]];
-        msg!("check3");
         let cpi_accounts = Transfer {
             from: ctx.accounts.from.to_account_info(),
             to: ctx.accounts.to.to_account_info(),
@@ -23,8 +21,9 @@ pub mod cpi_token_onchain_sample {
         };
         let cpi_program = ctx.accounts.token_program.clone();
         let cpi_ctx = CpiContext::new_with_signer(cpi_program, cpi_accounts, signer);
-        msg!("check4");
+        msg!("Calling transfer...");
         token::transfer(cpi_ctx, amount).expect("transfer2 failed"); //?;
+        msg!("Transfer success.");
         Ok(())
     }
 }
