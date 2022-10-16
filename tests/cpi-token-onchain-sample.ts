@@ -4,7 +4,8 @@ import { CpiTokenOnchainSample } from "../target/types/cpi_token_onchain_sample"
 import {
   createAssociatedTokenAccount,
   createMint,
-  mintTo
+  mintTo,
+  getAccount
 } from "@solana/spl-token";
 import { PublicKey, SystemProgram, Transaction, Connection, Commitment } from '@solana/web3.js';
 import { expect } from "chai";
@@ -48,12 +49,22 @@ describe("cpi-token-onchain-sample", () => {
       })
       .signers([fromWallet])
       .rpc();
+
+    // check the wallet creation
+    const escrowWalletTokenAccount = await getAccount(connection, escrowWallet);
+
+    // the sender (aka fromWallet) should not own the account anymore
+    expect(escrowWalletTokenAccount.owner.toBase58()).not.equal(fromWallet.publicKey.toBase58());
+    // the new owner is the program through PDA
+    expect(escrowWalletTokenAccount.owner.toBase58()).to.equal(escrowWallet.toBase58());
+
     console.log('minting to...');
     await mintTo(connection, fromWallet, mint, escrowWallet, fromWallet, 5_000_000_000);
     const accountInfo = await connection.getParsedAccountInfo(escrowWallet);
-    console.log(JSON.stringify(accountInfo.value.data, null, 4));
+    expect(+(accountInfo.value.data as any).parsed.info.tokenAmount.amount).to.eq(5_000_000_000);
+
     const toAccount = await createAssociatedTokenAccount(connection, fromWallet, mint, toWallet.publicKey)
-    
+
     console.log('wallet transfer', toAccount.toBase58());
     await program.methods
       .walletTransfer(new anchor.BN(1_500_000_000))
