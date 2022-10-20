@@ -2,7 +2,7 @@ use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Transfer, Mint, SetAuthority, TokenAccount};
 use spl_token::instruction::AuthorityType;
 
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("7wFRuxMhXSj4AH4UGKSpaBWuYjxXkFLiakbKmE35W643");
 
 #[program]
 pub mod cpi_token_onchain_sample {

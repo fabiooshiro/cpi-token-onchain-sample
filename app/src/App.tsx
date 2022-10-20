@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import { SendSOLToRandomAddress } from './components/SendSOLToRandomAddress';
+import { CreateTokenAccount } from './components/CreateTokenAccount';
+import { EscrowTransferToken } from './components/EscrowTransferToken';
 import { Wallet } from './components/Wallet';
 
 function App() {
@@ -8,7 +9,9 @@ function App() {
     <div className="App">
       <div className='App-header'>
         <Wallet>
-          <SendSOLToRandomAddress />
+          
+          <CreateTokenAccount />
+          <EscrowTransferToken />
         </Wallet>
       </div>
     </div>
