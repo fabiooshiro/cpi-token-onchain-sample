@@ -43,7 +43,6 @@ export function EscrowTransferToken() {
                 .accounts({
                     escrowWallet,
                     to: toAccount,
-                    // taker: wallet.publicKey, // transaction payer
                     authority: escrowWallet,
                     mint,
                 })

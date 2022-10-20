@@ -71,7 +71,7 @@ describe("cpi-token-onchain-sample", () => {
       .accounts({
         escrowWallet,
         to: toAccount,
-        taker: userReceiving,
+        transactionPayer: userReceiving,
         authority: escrowWallet,
         mint,
         // tokenProgram: escrowWallet,

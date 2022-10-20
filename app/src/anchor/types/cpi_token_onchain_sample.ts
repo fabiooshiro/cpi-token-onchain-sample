@@ -42,7 +42,7 @@ export type CpiTokenOnchainSample = {
       "name": "walletTransfer",
       "accounts": [
         {
-          "name": "taker",
+          "name": "transactionPayer",
           "isMut": true,
           "isSigner": true
         },
@@ -177,7 +177,7 @@ export const IDL: CpiTokenOnchainSample = {
       "name": "walletTransfer",
       "accounts": [
         {
-          "name": "taker",
+          "name": "transactionPayer",
           "isMut": true,
           "isSigner": true
         },

@@ -130,7 +130,7 @@ pub struct InitWallet<'info> {
 pub struct WalletTransfer<'info> {
     #[account(mut, signer)]
     /// CHECK: This is not dangerous because we don't read or write from this account
-    pub taker: AccountInfo<'info>,
+    pub transaction_payer: AccountInfo<'info>,
 
     #[account(mut)]
     escrow_wallet: Account<'info, TokenAccount>,

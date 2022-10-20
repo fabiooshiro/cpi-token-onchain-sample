@@ -42,7 +42,7 @@
       "name": "walletTransfer",
       "accounts": [
         {
-          "name": "taker",
+          "name": "transactionPayer",
           "isMut": true,
           "isSigner": true
         },
